@@ -1,0 +1,6 @@
+1) When you enter a new line in the textarea of a note in edit mode, it does not register as a new line, but a space.
+    Exiting edit mode reveals the inconsistency.
+2) Clicking on note "A" and then on note "B" does not result in entering edit mode for note "A", exiting edit mode for note "A",
+    and entering edit mode in note "B".
+3) The useState and useEffect hooks in frontend/App.js are causing an infinite loop 
+4) Notes are delete from last to first. Only God knows why.
