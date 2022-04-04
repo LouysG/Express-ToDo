@@ -1,12 +1,31 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
-const PORT = process.env.PORT || 3000;
-const notes = [];
+const PORT = process.env.PORT || 3001;
+let notes = [];
+let id = 0;
 
-app.get('/notes', (req, res, next) => {
+app.use(cors())
+app.get('/', (req, res, next) => {
     res.send(notes)
 });
+
+app.use('/add', (req, res, next) => {
+    notes.push({
+        content: '',
+        id: id
+    })
+    id = id + 1;
+    console.log(notes);
+    res.send();
+})
+
+app.use('/delete/:id', (req, res, next) => {
+    const id = parseInt(req.params.id);
+    notes = notes.filter(note => note.id !== id);
+    res.send();
+})
 
 /*
 app.post('/notes', (req, res, next) => {
